@@ -1,0 +1,26 @@
+
+<div class="col-md-12">
+        <div id="create_group_and_host">
+
+
+          <div class="row">
+            <div class="col-md-5 pr-md-1">
+              <div class="form-group">
+
+                <%= select_tag( 'group_val', options_for_select(@group_ret_val), prompt: "Select Group", class: "form-control" ,
+                name: 'group_val', data: { remote: true, url: 'index', method: 'post' }) %>
+
+              </div>
+            </div>
+            <div class="col-md-5 px-md-1">
+              <div class="form-group">
+
+                <%= select_tag( 'host_val', options_for_select(@selected_host), prompt: @selected_host, class: "form-control" ,
+                name: 'host_val', data: { remote: true, url: 'index', method: 'post' }) %>
+
+
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%= stylesheet_link_tag 'css/nucleo-icons.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'css/dashboard-main.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'register', media: 'all', 'data-turbolinks-track' => true %>
+
+  <!-- Core JS Files -->
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <%= javascript_include_tag "other/perfect-scrollbar.jquery.min" %>
+
+  <%= javascript_include_tag "other/bootstrap-notify.js" %>
+  <%= javascript_include_tag "dashboard-main.js" %>
+  <%= javascript_include_tag "chart.js" %>
+
+  <script src="assets/chart2.js"></script>
+  <script src="assets/dashboard.js"></script>
+  <script src="assets/jquery-3.4.1.min.js"></script>
+  <script src="assets/jquery-ui.js"></script>
+  <script src="assets/popper.min.js"></script>
+  <script src="assets/bootstrap.min.js"></script>
+
+  <%= javascript_include_tag "dashboard.js" %>
+  <%= javascript_include_tag "dashboard-func.js" %>
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/svg" href="../assets/favicon.svg">
+
+    <title>
+      LUDI-APM
+    </title>
+    <!-- Fonts and icons -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet"/>
+
+  </head>
+
+  <body class="" data-turbolinks="false">
+    <div class="wrapper">
+      <div class="sidebar">
+        <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red" -->
+        <div class="sidebar-wrapper">
+          <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+              <img src="assets/ludi_logo.svg"></img>
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+              LUDI-APM v.1
+            </a>
+          </div>
+
+          <ul class="nav">
+            <li>
+              <a href="dashboard">
+                <i class="tim-icons icon-chart-pie-36"></i>
+                <p>대시보드</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="icons">
+                <i class="tim-icons icon-chart-bar-32"></i>
+                <p>서브 대시보드</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="./map.html">
+                <i class="tim-icons icon-pin"></i>
+                <p>네트워크 맵(준비중)</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
+                <i class="tim-icons icon-bell-55"></i>
+                <p>알림 & 임계치 설정</p>
+              </a>
+
+              <div id="collapseUtilities" class="collapse">
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a sytle="text-align: center;" class="collapse-item" href="th_infra">
+                  <font text-align="right" size="1em" color="white">
+                    > 인프라 모니터링</font>
+                </a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="collapse-item" href="th_app">
+                  <font size="1em" color="white">
+                    > 알림 채널</font>
+                </a><br>
+
+              </div>
+            </li>
+
+            <li>
+              <a href="event_history">
+                <i class="tim-icons icon-double-left"></i>
+                <p>이벤트 히스토리</p>
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="register">
+                <i class="tim-icons icon-bullet-list-67"></i>
+                <p>모니터링 자원 관리</p>
+              </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li>
+              <a href="./guide">
+                <i class="tim-icons icon-paper"></i>
+                <p>가이드</p>
+              </a>
+            </li>
+            <li>
+              <a href="./report">
+                <i class="tim-icons icon-single-copy-04"></i>
+                <p>보고서</p>
+              </a>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+          <div class="container-fluid">
+            <div class="navbar-wrapper">
+              <div class="navbar-toggle d-inline">
+                <button type="button" class="navbar-toggler">
+                  <span class="navbar-toggler-bar bar1"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </button>
+              </div>
+              <a class="navbar-brand" href="/dashboard">
+                <img src="assets/report_logo.png" width="70%"></img>
+
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+            </button>
+            <!-- User Profile Selector -->
+            <div class="collapse navbar-collapse" id="navigation">
+
+              <ul class="navbar-nav ml-auto">
+
+                <li class="dropdown nav-item">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="photo">
+                      <i class="tim-icons icon-single-02">새로고침</i>
+                    </div>
+                    <b class="caret d-none d-lg-block d-xl-block"></b>
+                    <p class="d-lg-none">
+                      로그 아웃
+                    </p>
+                  </a>
+                  <ul class="dropdown-menu dropdown-navbar">
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">프로필</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">셋팅</a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">로그 아웃</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="separator d-lg-none"></li>
+              </ul>
+            </div>
+            <!-- End User Profile Selector -->
+
+            <!-- Refresh Selector -->
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav ml-auto">
+
+                <li class="dropdown nav-item">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="photo">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                    <b class="caret d-none d-lg-block d-xl-block"></b>
+                    <p class="d-lg-none">
+                      로그 아웃
+                    </p>
+                  </a>
+                  <ul class="dropdown-menu dropdown-navbar">
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">프로필</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">셋팅</a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">로그 아웃</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="separator d-lg-none"></li>
+              </ul>
+            </div>
+            <!-- End Refresh Selector -->
+
+          </div>
+        </nav>
+        <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="tim-icons icon-simple-remove"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Navbar -->
+
+        <!-- sub title -->
+        <div class="content">
+          <div class="col-md-13">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-md-6 ml-auto mr-auto text-center">
+                    <div class="card-header">
+                      <h4 class="card-title">
+                        <strong>
+                          모니터링 자원 관리
+                        </strong>
+
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+                <!-- sub title end-->
+
+              </div>
+            </div>
+          </div>
+
+<!-- Host Group and HOsts -->
+          <div class="row">
+            <div class="col-md-3">
+
+
+              <div class="card">
+
+                <!-- event triggers -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4 class="card-title">
+                          <strong>그룹 현황</strong>
+                        </h4>
+                      </div>
+
+                      <div class="card-body">
+                        <div class="table" name="group_list" style="width:100%; height:440px; overflow:auto">
+                          <table id="group_list" class="table table sorter ">
+                            <thead class=" text-primary">
+
+                              <tbody>
+
+                                <th>
+                                  <font color="skyblue">
+                                    Group ID
+                                  </font>
+                                </th>
+                                <th class="text-center">
+                                  <font color="skyblue">
+                                    그룹 명
+                                  </font>
+                                </th>
+
+
+                                <% @all_groups_hash.each do |t| %>
+
+                                  <tr>
+
+                                    <td>
+                                      <% group_id = t.select{|x| x["groupid"]} %>
+                                        <% group_id_val = group_id.first %>
+                                          <% group_id_val_str = group_id_val[1] %>
+                                            <%= group_id_val_str %>
+
+                                          </td>
+                                          <td >
+                                            <% group = t.select{|x| x["name"]} %>
+
+                                              <% group_val_json = group.to_json %>
+                                                <% group_val = group_val_json.scan(/(?<=name":").*[a-zA-Z0-9]/) %>
+                                                  <%= group_val[0] %>
+
+                                                </td>
+
+                                                          <% end %>
+
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            </div>
+
+
+
+                                          </div>
+                                        </div>
+
+
+            <div class="col-md-5">
+              <div class="card">
+
+                <!-- problem triggers -->
+                <div class="row">
+                  <div class="col-md-12 resizable">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4 class="card-title">
+
+                          <strong>호스트 현황</strong>
+                        </h4>
+
+                      </div>
+
+                      <div class="card-body">
+                        <div class="table-responsive" name="host_list" style="width:100%; height:440px; overflow:auto">
+                          <table id="host_list" class="table table sorter ">
+                            <thead class=" text-primary">
+
+                              <tbody>
+
+                                <th>
+                                  <font color="skyblue">
+                                    Host ID
+                                  </font>
+                                </th>
+                                <th class="text-center">
+                                  <font color="skyblue">
+                                    호스트
+                                  </font>
+                                </th>
+                                <th>
+                                  <font color="skyblue">
+                                    IP address</font>
+                                </th>
+                                <th>
+                                  <font color="skyblue">
+                                    Status (에이전트 상태)</font>
+                                </th>
+
+                                <% @all_hosts.each do |t| %>
+
+                                  <tr>
+
+                                    <td>
+                                      <% host_id = t.select{|x| x["hostid"]} %>
+                                        <% host_id_val = host_id.first %>
+                                          <% host_id_val_str = host_id_val[1] %>
+                                            <%= host_id_val_str %>
+
+                                          </td>
+                                          <td >
+                                            <% host = t.select{|x| x["host"]} %>
+
+                                              <% host_val_json = host.to_json %>
+                                                <% host_val = host_val_json.scan(/(?<=host":").*[a-zA-Z0-9]/) %>
+                                                  <%= host_val[0] %>
+
+                                                </td>
+
+                                                <td>
+                                                  <% interface_val = t.select{|x| x["interfaces"]} %>
+                                                    <% interface_str = interface_val.to_json %>
+                                                      <% interface_val_int = interface_str.scan(/(?<=ip":").*[a-zA-Z0-9]/) %>
+
+                                                        <%= interface_val_int[0] %>
+
+                                                      </td>
+                                                <td>
+                                                  <% status = t.select{|x| x["status"]} %>
+                                                    <% status_str = status.to_s %>
+                                                      <% status_sort = status_str.gsub!(/[^0-9]/, ' ') %>
+                                                        <% status_int = status_sort.to_i %>
+                                                          <% case status_int %>
+                                                            <% when 0 %>
+                                                              <font color="green">
+                                                                OK (모니터링 중)
+                                                              </font>
+                                                              <i class="fa fa-check-circle" style="color:green"></i>
+                                                              <% when 1 %>
+                                                                <i class="fa fa-exclamation-circle" style="color:yellow"></i>
+                                                                <font color="red">
+                                                                  PROBLEM (모니터링 되지 않음)
+                                                                </font>
+
+                                                              <% end %>
+
+                                                            </td>
+                                                          <% end %>
+
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                            </div>
+
+                                            <ul class="pagination"></ul>
+
+                                          </div>
+                                        </div>
+
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="card">
+
+
+                                              <!-- problem triggers -->
+                                              <div class="row">
+                                                <div class="col-md-12">
+                                                  <div class="card">
+                                                    <div class="card-header">
+                                                      <h4 class="card-title">
+                                                        <strong>
+                                                          연결된 모니터링 호스트 (그룹 별)
+
+
+                                                        </strong>
+                                                      </h4>
+                                                    </div>
+
+                                                    <div class="card-body">
+                                                      <canvas id="monitered_host" width="454" height="454"></canvas>
+                                                      <script>
+                                                      var ctx = document.getElementById('monitered_host').getContext('2d');
+                                                      var myChart = new Chart(ctx, {
+                                                          type: 'doughnut',
+                                                          data: {
+
+                                                              labels: <%= @all_groups_name.to_json.html_safe %>,
+
+                                                              datasets: [{
+                                                                  label: '# of Votes',
+
+                                                                  data: [ <% @all_groups_name.each_with_index do |t, index| %>
+                                                                          <% @hosts = @all_groups_name %>
+                                                                          <% @hosts_coun= host_get_by_group_name(t) %>
+                                                                          <% @hosts_count = @hosts_coun %>
+                                                                          <% @hosts_json = @hosts_count.to_json.html_safe %>
+                                                                          <%= @all_hosts2 = @hosts_json%>,
+                                                                          <% end %>],
+                                                                  backgroundColor: [
+                                                                      'rgba(255, 0, 127, 0.3)',
+                                                                      'rgba(54, 162, 235, 0.3)',
+                                                                      'rgba(255, 206, 86, 0.3)',
+                                                                      'rgba(75, 192, 192, 0.3)',
+                                                                      'rgba(2, 136, 209, 0.3)',
+                                                                      'rgba(27, 94, 32, 0.3)',
+                                                                      'rgba(255, 94, 79, 0.3)',
+                                                                      'rgba(200, 204, 188, 0.3)',
+                                                                      'rgba(97, 97, 97, 0.3)',
+                                                                      'rgba(1, 0, 255, 0.3)',
+                                                                      'rgba(179, 157, 219, 0.3)',
+                                                                      'rgba(95, 0, 255, 0.3)',
+                                                                      'rgba(244, 67, 54, 0.3)',
+                                                                      'rgba(63, 81, 181, 0.3)',
+                                                                      'rgba(0, 150, 136, 0.3)',
+
+                                                                      'rgba(245, 127, 23, 0.3)'
+                                                                  ],
+                                                                  borderColor: [
+                                                                  'rgba(255, 0, 127, 5)',
+                                                                  'rgba(54, 162, 235, 5)',
+                                                                  'rgba(255, 206, 86, 5)',
+                                                                  'rgba(75, 192, 192, 5)',
+                                                                  'rgba(2, 136, 209, 5)',
+                                                                  'rgba(27, 94, 32, 5)',
+                                                                  'rgba(255, 94, 79, 5)',
+                                                                  'rgba(200, 204, 188, 5)',
+                                                                  'rgba(97, 97, 97, 5)',
+                                                                  'rgba(1, 0, 255, 5)',
+                                                                  'rgba(179, 157, 219, 5)',
+                                                                  'rgba(95, 0, 255, 5)',
+                                                                  'rgba(244, 67, 54, 5)',
+                                                                  'rgba(63, 81, 181, 5)',
+                                                                  'rgba(0, 150, 136, 5)',
+
+                                                                  'rgba(245, 127, 23, 5)'
+                                                                  ],
+                                                                  borderWidth: 1
+                                                              }]
+                                                          },
+                                                          options: {
+                                                              scales: {
+
+                                                              }
+                                                          }
+                                                      });
+                                                      </script>
+
+                                                    </div>
+
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <!-- Create Group and Host -->
+                                        <div class="col-md-12">
+                                          <div class="card shadow mb-4">
+                                            <div class="card-header py-2">
+                                              <span>
+                                                <strong>
+                                                  그룹 등록
+                                                </strong>
+                                                <span style="float:right; display: inline;">
+                                                  <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="collapse" data-target="#create_group"></button>
+                                                </span>
+                                              </span>
+
+                                            </div>
+
+                                            <div class="collapse" id="create_group">
+                                              <div class="card-body">
+
+                                                <%= form_tag "/register", method: :post do %>
+                                                <div class="row">
+                                                  <div class="col-md-5 pr-md-1">
+                                                    <div class="form-group">
+                                                      <label>그룹 명 (Group name)</label>
+                                                      <input name="create_group" type="text" class="form-control" placeholder="생성할 그룹 이름">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-1 px-md-2">
+                                                    <div class="form-group">
+                                                      <label>-</label>
+                                                      <input type="submit" class="form-control" value="생성">
+                                                    </div>
+                                                  </div>
+
+                                                </div>
+
+                                              <% end %>
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-md-12">
+                                        <div class="card shadow mb-4">
+                                          <div class="card-header py-2">
+                                            <span>
+                                              <strong>
+                                                호스트 등록
+                                              </strong>
+                                              <span style="float:right; display: inline;">
+                                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="collapse" data-target="#create_host"></button>
+                                              </span>
+                                            </span>
+
+                                          </div>
+
+                                          <div class="collapse" id="create_host">
+                                            <div class="card-body">
+                                              <div id="create_group_and_host">
+
+                                                <%= form_tag "/register", method: :post do %>
+                                                <div class="row">
+                                                  <div class="col-md-3 pr-md-1">
+                                                    <div class="form-group">
+                                                      <label>호스트 명(Host name)</label>
+                                                      <input name="create_host_name" type="text" class="form-control" placeholder="생성할 호스트 이름">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-3 px-md-1">
+                                                    <div class="form-group">
+                                                      <label>소속 그룹(Groups)
+                                                      </label>
+                                                      <input name="create_host_group" type="text" class="form-control" placeholder="소속시킬 그룹 이름 (그룹이 이미 존재하여야 합니다)">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-4 pl-md-1">
+                                                    <div class="form-group">
+                                                      <label>아이피주소 (IP address)</label>
+                                                      <input name="create_ip" type="text" class="form-control" placeholder="추가할 모니터링 대상의 아이피 주소">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-1 pl-md-1">
+                                                    <div class="form-group">
+                                                      <label>포트 (Port)</label>
+                                                      <input name="create_port" type="text" class="form-control" placeholder="포트 번호" value="10050">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-1 pl-md-1">
+                                                    <div class="form-group">
+                                                      <label>
+                                                        -
+                                                      </label>
+                                                      <input type="submit" class="form-control" value="생성">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                              <% end %>
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- End Create Group and Host -->
+
+                                    <footer class="footer">
+                                      <div class="container-fluid">
+
+                                        <div class="copyright">
+                                          ©
+                                          <a href="dashboard" target="_blank">LUDI-APM</a>
+                                        </div>
+                                      </div>
+                                    </footer>
+                                  </div>
+                                </div>
+                                <div class="fixed-plugin">
+                                  <div class="dropdown show-dropdown">
+
+                                    <a href="#" data-toggle="dropdown">
+                                      <i class="fa fa-cog fa-2x"></i>
+
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                      <li class="header-title">
+                                        사이드바 테마 선택</li>
+                                      <li class="adjustments-line">
+                                        <a href="javascript:void(0)" class="switch-trigger background-color">
+                                          <div class="badge-colors text-center">
+                                            <span class="badge filter badge-primary active" data-color="primary"></span>
+                                            <span class="badge filter badge-info" data-color="blue"></span>
+                                            <span class="badge filter badge-success" data-color="green"></span>
+                                          </div>
+                                          <div class="clearfix"></div>
+                                        </a>
+                                      </li>
+                                      <li class="adjustments-line text-center color-change">
+                                        <span class="color-label">White 테마</span>
+                                        <span class="badge light-badge mr-2"></span>
+                                        <span class="badge dark-badge ml-2"></span>
+                                        <span class="color-label">DARK 테마</span>
+                                      </li>
+
+                                      <li class="header-title">LUDI-APM</li>
+                                      <li class="button-container text-center">
+                                        <br>
+                                        <br>
+
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+
+                                <script type="text/javascript">
+                                  $(document).ready(function () {
+                                    $().ready(function () {
+                                      $sidebar = $('.sidebar');
+                                      $navbar = $('.navbar');
+                                      $main_panel = $('.main-panel');
+
+                                      $full_page = $('.full-page');
+
+                                      $sidebar_responsive = $('body > .navbar-collapse');
+                                      sidebar_mini_active = true;
+                                      white_color = false;
+
+                                      window_width = $(window).width();
+
+                                      fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+                                      $('.fixed-plugin a').click(function (event) {
+                                        if ($(this).hasClass('switch-trigger')) {
+                                          if (event.stopPropagation) {
+                                            event.stopPropagation();
+                                          } else if (window.event) {
+                                            window.event.cancelBubble = true;
+                                          }
+                                        }
+                                      });
+
+                                      $('.fixed-plugin .background-color span').click(function () {
+                                        $(this).siblings().removeClass('active');
+                                        $(this).addClass('active');
+
+                                        var new_color = $(this).data('color');
+
+                                        if ($sidebar.length != 0) {
+                                          $sidebar.attr('data', new_color);
+                                        }
+
+                                        if ($main_panel.length != 0) {
+                                          $main_panel.attr('data', new_color);
+                                        }
+
+                                        if ($full_page.length != 0) {
+                                          $full_page.attr('filter-color', new_color);
+                                        }
+
+                                        if ($sidebar_responsive.length != 0) {
+                                          $sidebar_responsive.attr('data', new_color);
+                                        }
+                                      });
+
+                                      $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                                        var $btn = $(this);
+
+                                        if (sidebar_mini_active == true) {
+                                          $('body').removeClass('sidebar-mini');
+                                          sidebar_mini_active = false;
+                                          Dashboard.showSidebarMessage('Sidebar mini deactivated...');
+                                        } else {
+                                          $('body').addClass('sidebar-mini');
+                                          sidebar_mini_active = true;
+                                          Dashboard.showSidebarMessage('Sidebar mini activated...');
+                                        }
+
+                                        // we simulate the window Resize so the charts will get updated in realtime.
+                                        var simulateWindowResize = setInterval(function () {
+                                          window.dispatchEvent(new Event('resize'));
+                                        }, 180);
+
+                                        // we stop the simulation of Window Resize after the animations are completed
+                                        setTimeout(function () {
+                                          clearInterval(simulateWindowResize);
+                                        }, 1000);
+                                      });
+
+                                      $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+                                        var $btn = $(this);
+
+                                        if (white_color == true) {
+
+                                          $('body').addClass('change-background');
+                                          setTimeout(function () {
+                                            $('body').removeClass('change-background');
+                                            $('body').removeClass('white-content');
+                                          }, 900);
+                                          white_color = false;
+                                        } else {
+
+                                          $('body').addClass('change-background');
+                                          setTimeout(function () {
+                                            $('body').removeClass('change-background');
+                                            $('body').addClass('white-content');
+                                          }, 900);
+
+                                          white_color = true;
+                                        }
+
+                                      });
+
+                                      $('.light-badge').click(function () {
+                                        $('body').addClass('white-content');
+                                      });
+
+                                      $('.dark-badge').click(function () {
+                                        $('body').removeClass('white-content');
+                                      });
+                                    });
+                                  });
+                                </script>
+                                <script>
+                                  $(document).ready(function () {
+                                    // Javascript method's body can be found in assets/js/demos.js
+                                    demo.initDashboardPageCharts();
+
+                                  });
+                                </script>
+
+                              </body>
+
+                            </html>

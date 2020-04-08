@@ -1,0 +1,8 @@
+<% @selected_group = params[:group_val_name] %>
+
+$('#selector').html(
+
+      "<%= escape_javascript(render 'ajax_result') %>"
+
+
+)

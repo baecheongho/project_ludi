@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%= stylesheet_link_tag 'css/nucleo-icons.css', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'css/dashboard-main.css', media: 'all', 'data-turbolinks-track' => true %>
+
+<!--   Core JS Files   -->
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<%= javascript_include_tag "other/perfect-scrollbar.jquery.min" %>
+
+<%= javascript_include_tag "other/bootstrap-notify.js" %>
+<%= javascript_include_tag "dashboard-main.js" %>
+<%= javascript_include_tag "chart.js" %>
+
+
+<script src="assets/chart2.js"></script>
+<script src="assets/dashboard.js"></script>
+<script src="assets/jquery-3.4.1.min.js"></script>
+<script src="assets/jquery-ui.js"></script>
+<script src="assets/popper.min.js"></script>
+<script src="assets/bootstrap.min.js"></script>
+
+
+<%= javascript_include_tag "dashboard.js" %>
+<%= javascript_include_tag "dashboard-func.js" %>
+
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/svg" href="../assets/favicon.svg">
+
+    <title>
+      LUDI-APM
+    </title>
+    <!-- Fonts and icons -->
+
+
+  </head>
+
+  <body class="" data-turbolinks="false">
+    <div class="wrapper">
+      <div class="sidebar">
+        <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red" -->
+        <div class="sidebar-wrapper">
+          <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+              <img src="assets/ludi_logo.svg"></img>
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+              LUDI-APM v.1
+            </a>
+          </div>
+          <ul class="nav">
+            <li class="active ">
+              <a href="dashboard">
+                <i class="tim-icons icon-chart-pie-36"></i>
+                <p>대시보드</p>
+              </a>
+            </li>
+            <li>
+              <a href="icons">
+                <i class="tim-icons icon-chart-bar-32"></i>
+                <p>서브 대시보드</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="./map.html">
+                <i class="tim-icons icon-pin"></i>
+                <p>네트워크 맵(준비중)</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="false" aria-controls="collapseUtilities">
+                <i class="tim-icons icon-bell-55"></i>
+                <p>알림 & 임계치 설정</p>
+              </a>
+
+              <div id="collapseUtilities" class="collapse">
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a sytle="text-align: center;" class="collapse-item" href="th_infra">
+                  <font text-align="right" size="1em" color="white">
+                    > 인프라 모니터링</font>
+                </a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="collapse-item" href="th_database">
+                  <font size="1em" color="white">
+                    > 데이터베이스 모니터링</font>
+                </a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="collapse-item" href="th_app">
+                  <font size="1em" color="white">
+                    > 어플리케이션 모니터링</font>
+                </a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="collapse-item" href="th_app">
+                  <font size="1em" color="white">
+                    > 알림 채널</font>
+                </a><br>
+
+              </div>
+            </li>
+
+
+            <li>
+              <a href="event_history">
+                <i class="tim-icons icon-double-left"></i>
+                <p>이벤트 히스토리</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="./register">
+                <i class="tim-icons icon-bullet-list-67"></i>
+                <p>모니터링 등록 및 관리</p>
+              </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <li>
+              <a href="./guide">
+                <i class="tim-icons icon-paper"></i>
+                <p>가이드</p>
+              </a>
+            </li>
+            <li>
+              <a href="./report">
+                <i class="tim-icons icon-single-copy-04"></i>
+                <p>보고서</p>
+              </a>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+          <div class="container-fluid">
+            <div class="navbar-wrapper">
+              <div class="navbar-toggle d-inline">
+                <button type="button" class="navbar-toggler">
+                  <span class="navbar-toggler-bar bar1"></span>
+                  <span class="navbar-toggler-bar bar2"></span>
+                  <span class="navbar-toggler-bar bar3"></span>
+                </button>
+              </div>
+              <a class="navbar-brand" href="/dashboard">
+                <img src="assets/report_logo.png" width="70%"></img>
+
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+              <span class="navbar-toggler-bar navbar-kebab"></span>
+            </button>
+            <!-- User Profile Selector -->
+            <div class="collapse navbar-collapse" id="navigation">
+
+              <ul class="navbar-nav ml-auto">
+
+                <li class="dropdown nav-item">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="photo">
+                      <i class="tim-icons icon-single-02">새로고침</i>
+                    </div>
+                    <b class="caret d-none d-lg-block d-xl-block"></b>
+                    <p class="d-lg-none">
+                      로그 아웃
+                    </p>
+                  </a>
+                  <ul class="dropdown-menu dropdown-navbar">
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">프로필</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">셋팅</a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">로그 아웃</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="separator d-lg-none"></li>
+              </ul>
+            </div>
+            <!-- End User Profile Selector -->
+
+          <!-- Refresh Selector -->
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav ml-auto">
+
+                <li class="dropdown nav-item">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="photo">
+                      <i class="tim-icons icon-single-02"></i>
+                    </div>
+                    <b class="caret d-none d-lg-block d-xl-block"></b>
+                    <p class="d-lg-none">
+                      로그 아웃
+                    </p>
+                  </a>
+                  <ul class="dropdown-menu dropdown-navbar">
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">프로필</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">셋팅</a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">로그 아웃</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="separator d-lg-none"></li>
+              </ul>
+            </div>
+            <!-- End Refresh Selector -->
+
+          </div>
+        </nav>
+        <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <i class="tim-icons icon-simple-remove"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Navbar -->
+<!-- Group and host Selector -->
+        <div class="content sortable">
+          <div class="row">
+
+
+
+            <div name="group_val_name">
+
+              <script>
+                function group_val_na() {
+alert ('tt');
+}
+                </script>
+            <script>
+
+                function group_val_name() {
+                  Rails.ajax({
+                    url: "/dashboard",
+                    type: "POST",
+                    data: "1",
+
+                    success: function(data) {
+
+                    }
+                  });
+                }
+            </script>
+
+          </div>
+
+
+<div id="selector">
+
+<div class="col-md-12">
+
+        <div id="create_group_and_host">
+
+
+          <div class="row">
+            <div class="col-md-5 pr-md-1">
+              <div class="form-group">
+
+                <%= select_tag( 'group_val_name', options_for_select(@group_ret_val), prompt: "Select Group", class: "form-control" ,
+                name: 'group_val_name' , data: { remote: true, url: '/ajax', method: 'post' }) %>
+              </div>
+            </div>
+
+        </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+<!-- End Group and host Selector -->
+
+          <div class="col-12 ">
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav ml-auto">
+                <li class="search-bar input-group">
+                  <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
+                    <i class="tim-icons icon-zoom-split"></i>
+                    <span class="d-lg-none d-md-block">Search</span>
+                  </button>
+                </li>
+                <li class="dropdown nav-item">
+                  <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="notification d-none d-lg-block d-xl-block"></div>
+                    <i class="tim-icons icon-sound-wave"></i>
+                    <p class="d-lg-none">
+                      Notifications
+                    </p>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                    <li class="nav-link">
+                      <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a>
+                    </li>
+                    <li class="nav-link">
+                      <a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a>
+                    </li>
+                  </ul>
+                </li>
+              </div>
+
+<!-- test chart -->
+
+
+
+              <script>
+              var ctx = document.getElementById("MyCh").getContext("2d");
+
+              var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+              gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+              gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+              gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+              var myChart = new Chart(ctx, {
+                type: 'bar',
+                responsive: true,
+                legend: {
+                  display: false
+                },
+                data: {
+                  labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+                  datasets: [{
+                    label: "Countries",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    hoverBackgroundColor: gradientStroke,
+                    borderColor: '#1f8ef1',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    data: ['<%= @latest_val %>'],
+                  }]
+                },
+                options: gradientBarChartConfiguration
+              });
+              </script>
+<!-- test charts end -->
+
+
+  	<%= @latest_val_int %>
+              <div class="card card-chart resizable">
+                <div class="card-header ">
+                  <div class="row">
+                    <div class="col-sm-6 text-left">
+                      <h5 class="card-category">Disk Used</h5>
+                      <h2 class="card-title">Performance</h2>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                        <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                          <input type="radio" name="options" checked="checked">
+                          <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">MEMORY</span>
+                          <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-single-02"></i>
+                          </span>
+                        </label>
+                        <label class="btn btn-sm btn-primary btn-simple" id="1">
+                          <input type="radio" class="d-none d-sm-none" name="options">
+                          <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">CPU</span>
+                          <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-gift-2"></i>
+                          </span>
+                        </label>
+                        <label class="btn btn-sm btn-primary btn-simple" id="2">
+                          <input type="radio" class="d-none" name="options">
+                          <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
+                          <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-tap-02"></i>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="chartBig1"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card card-chart resizable">
+                <div class="card-header">
+                  <h5 class="card-category">Total Shipments</h5>
+                  <h3 class="card-title">
+                    <i class="tim-icons icon-bell-55 text-primary"></i>
+                    763,215</h3>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="chartLinePurple"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-chart resizable ">
+                <div class="card-header">
+                  <h5 class="card-category">Daily Sales</h5>
+                  <h3 class="card-title">
+                    <i class="tim-icons icon-delivery-fast text-info"></i>
+                    3,500€</h3>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="CountryChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card card-chart resizable ">
+                <div class="card-header">
+                  <h5 class="card-category">Completed Tasks</h5>
+                  <h3 class="card-title">
+                    <i class="tim-icons icon-send text-success"></i>
+                    12,100K</h3>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="chartLineGreen"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- problem triggers -->
+          <!--
+          <div class="row">
+            <div class="col-md-12 resizable">
+              <div class="card ">
+                <div class="card-header">
+                  <h4 class="card-title">
+                    <strong>Problems
+                    </strong>
+                    <small>[ 해결되지 않은 이벤트 현황  ]</small>
+                  </h4>
+                </div>
+
+
+
+
+
+
+
+                                <div class="card-body">
+                                  <div class="table-responsive">
+                                    <table id="event_history" class="table table sorter">
+                                      <thead class=" text-primary">
+
+                                        <tbody>
+
+                                          <th>
+                                            <font color="gray">
+                                              호스트
+                                            </font>
+                                          </th>
+                                          <th class="text-center">
+                                            <font color="gray">
+                                              Serverity (등급)
+                                            </font>
+                                          </th>
+                                          <th>
+                                            <font color="gray">
+                                              Status (현재 상태)</font>
+                                          </th>
+                                          <th>
+                                            <font color="gray">
+                                              Event trigger (이벤트 명)</font>
+                                          </th>
+                                          <th>
+                                            <font color="gray">
+                                              Age (발생후 지난시간)</font>
+                                          </th>
+                                          <th>
+                                            <font color="gray">
+                                              Time (발생 시점)</font>
+
+                                          </th>
+
+                                          <% @problems.each do |t| %>
+
+                                            <tr>
+
+                                              <td>
+                                                <% host = t.select{|x| x["eventid"]} %>
+                                                 <% host_str = host.to_s %>
+                                                  <%= host_str %>
+                                                    <% host_val = host_str.gsub!(/[^0-9]/, ' ') %>
+                                                      <%= host_val %>
+
+
+                                                    </td>
+                                                    <td >
+                                                      <% severity = t.select{|x| x["severity"]} %>
+                                                        <% severity_str = severity.to_s %>
+                                                          <% severity_sort = severity_str.gsub!(/[^0-9]/, ' ') %>
+                                                            <% severity_int = severity_sort.to_i %>
+                                                              <% case severity_int %>
+                                                                <% when 0 %>
+                                                                  <font color="gray">
+                                                                    <strong>
+                                                                      등급 없음
+                                                                      <strong></font>
+
+                                                                      <% when 1 %>
+
+                                                                        <font color="gray">
+                                                                          <strong>
+                                                                            보통
+                                                                            <strong></font>
+
+                                                                            <% when 2 %>
+
+                                                                              <font color="gray">
+                                                                                <strong>
+                                                                                  관심
+                                                                                  <strong></font>
+
+                                                                                  <% when 3 %>
+
+                                                                                    <font color="orange">
+                                                                                      <strong>
+                                                                                        주의
+                                                                                        <strong></font>
+
+                                                                                        <% when 4 %>
+
+                                                                                          <font color="#FF4501">
+                                                                                            <strong>
+                                                                                              경고
+                                                                                              <strong></font>
+
+                                                                                              <% when 5 %>
+
+                                                                                                <font color="red">
+                                                                                                  <strong>
+                                                                                                    심각
+                                                                                                    <strong></font>
+
+                                                                                                  <% end %>
+
+                                                                                                </td>
+                                                                                                <td>
+
+                                                                                                                <i class="fa fa-exclamation-circle" style="color:yellow"></i>
+                                                                                                                <font color="red">
+                                                                                                                  PROBLEM (문제 발생)
+                                                                                                                </font>
+
+
+
+                                                                                                            </td>
+
+                                                                                                            <td>
+                                                                                                              <% name = t.select{|x| x["name"]} %>
+                                                                                                                <% name_val_json = name.to_json %>
+                                                                                                                  <% name_val = name_val_json.scan(/(?<=name":").*[a-zA-Z0-9]/) %>
+                                                                                                                    <%= name_val%>
+
+                                                                                                                  </td>
+
+                                                                                                                  <td>
+                                                                                                                    <% age_val = t.select{|x| x["clock"]} %>
+                                                                                                                      <% age_val_str = age_val.to_s %>
+                                                                                                                        <% remove_spc = age_val_str.gsub!(/[^0-9]/, ' ') %>
+                                                                                                                          <% age_val_int = remove_spc.to_i %>
+                                                                                                                            <% Time.at(age_val_int) %>
+                                                                                                                              <%= time_ago_in_words(age_val_int, include_seconds: true)%>
+
+                                                                                                                            </td>
+
+                                                                                                                            <td>
+                                                                                                                              <% unix_time_val = t.select{|x| x["clock"]} %>
+                                                                                                                                <% unix_time_val_str = unix_time_val.to_s %>
+                                                                                                                                  <% remove_spc = unix_time_val_str.gsub!(/[^0-9]/, ' ') %>
+                                                                                                                                    <% unix_time_val_int = remove_spc.to_i %>
+                                                                                                                                      <%= Time.at(unix_time_val_int) %>
+                                                                                                                                    </td>
+
+                                                                                                                                  </tr>
+                                                                                                                                <% end %>
+
+                                                                                                                              </tbody>
+                                                                                                                            </table>
+                                                                                                                          </div>
+                                                                                                                        </div>
+                                                                                                                      </div>
+                                                                                                                    </div>
+
+                                                                                                                  </div> -->
+                                                                                                                </div>
+
+
+        <footer class="footer">
+          <div class="container-fluid">
+
+            <div class="copyright">
+              ©
+              <a href="dashboard" target="_blank">LUDI-APM</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="fixed-plugin">
+      <div class="dropdown show-dropdown">
+
+        <a href="#" data-toggle="dropdown">
+          <i class="fa fa-cog fa-2x"></i>
+
+        </a>
+
+        <ul class="dropdown-menu">
+          <li class="header-title">
+            사이드바 테마 선택</li>
+          <li class="adjustments-line">
+            <a href="javascript:void(0)" class="switch-trigger background-color">
+              <div class="badge-colors text-center">
+                <span class="badge filter badge-primary active" data-color="primary"></span>
+                <span class="badge filter badge-info" data-color="blue"></span>
+                <span class="badge filter badge-success" data-color="green"></span>
+              </div>
+              <div class="clearfix"></div>
+            </a>
+          </li>
+          <li class="adjustments-line text-center color-change">
+            <span class="color-label">White 테마</span>
+            <span class="badge light-badge mr-2"></span>
+            <span class="badge dark-badge ml-2"></span>
+            <span class="color-label">DARK 테마</span>
+          </li>
+
+          <li class="header-title">LUDI-APM</li>
+          <li class="button-container text-center">
+            <br>
+            <br>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $().ready(function () {
+          $sidebar = $('.sidebar');
+          $navbar = $('.navbar');
+          $main_panel = $('.main-panel');
+
+          $full_page = $('.full-page');
+
+          $sidebar_responsive = $('body > .navbar-collapse');
+          sidebar_mini_active = true;
+          white_color = false;
+
+          window_width = $(window).width();
+
+          fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+          $('.fixed-plugin a').click(function (event) {
+            if ($(this).hasClass('switch-trigger')) {
+              if (event.stopPropagation) {
+                event.stopPropagation();
+              } else if (window.event) {
+                window.event.cancelBubble = true;
+              }
+            }
+          });
+
+          $('.fixed-plugin .background-color span').click(function () {
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+
+            var new_color = $(this).data('color');
+
+            if ($sidebar.length != 0) {
+              $sidebar.attr('data', new_color);
+            }
+
+            if ($main_panel.length != 0) {
+              $main_panel.attr('data', new_color);
+            }
+
+            if ($full_page.length != 0) {
+              $full_page.attr('filter-color', new_color);
+            }
+
+            if ($sidebar_responsive.length != 0) {
+              $sidebar_responsive.attr('data', new_color);
+            }
+          });
+
+          $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+            var $btn = $(this);
+
+            if (sidebar_mini_active == true) {
+              $('body').removeClass('sidebar-mini');
+              sidebar_mini_active = false;
+              Dashboard.showSidebarMessage('Sidebar mini deactivated...');
+            } else {
+              $('body').addClass('sidebar-mini');
+              sidebar_mini_active = true;
+              Dashboard.showSidebarMessage('Sidebar mini activated...');
+            }
+
+            // we simulate the window Resize so the charts will get updated in realtime.
+            var simulateWindowResize = setInterval(function () {
+              window.dispatchEvent(new Event('resize'));
+            }, 180);
+
+            // we stop the simulation of Window Resize after the animations are completed
+            setTimeout(function () {
+              clearInterval(simulateWindowResize);
+            }, 1000);
+          });
+
+          $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+            var $btn = $(this);
+
+            if (white_color == true) {
+
+              $('body').addClass('change-background');
+              setTimeout(function () {
+                $('body').removeClass('change-background');
+                $('body').removeClass('white-content');
+              }, 900);
+              white_color = false;
+            } else {
+
+              $('body').addClass('change-background');
+              setTimeout(function () {
+                $('body').removeClass('change-background');
+                $('body').addClass('white-content');
+              }, 900);
+
+              white_color = true;
+            }
+
+          });
+
+          $('.light-badge').click(function () {
+            $('body').addClass('white-content');
+          });
+
+          $('.dark-badge').click(function () {
+            $('body').removeClass('white-content');
+          });
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+      });
+    </script>
+
+    <!-- chart js -->
+    <script>
+      type = ['primary', 'info', 'success', 'warning', 'danger'];
+
+      demo = {
+        initPickColor: function() {
+          $('.pick-class-label').click(function() {
+            var new_class = $(this).attr('new-class');
+            var old_class = $('#display-buttons').attr('data-class');
+            var display_div = $('#display-buttons');
+            if (display_div.length) {
+              var display_buttons = display_div.find('.btn');
+              display_buttons.removeClass(old_class);
+              display_buttons.addClass(new_class);
+              display_div.attr('data-class', new_class);
+            }
+          });
+        },
+
+        initDocChart: function() {
+          chartColor = "#FFFFFF";
+
+          // General configuration for the charts with Line gradientStroke
+          gradientChartOptionsConfiguration = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            tooltips: {
+              bodySpacing: 4,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest",
+              xPadding: 10,
+              yPadding: 10,
+              caretPadding: 10
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+                display: 0,
+                gridLines: 0,
+                ticks: {
+                  display: false
+                },
+                gridLines: {
+                  zeroLineColor: "transparent",
+                  drawTicks: false,
+                  display: false,
+                  drawBorder: false
+                }
+              }],
+              xAxes: [{
+                display: 0,
+                gridLines: 0,
+                ticks: {
+                  display: false
+                },
+                gridLines: {
+                  zeroLineColor: "transparent",
+                  drawTicks: false,
+                  display: false,
+                  drawBorder: false
+                }
+              }]
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 15,
+                bottom: 15
+              }
+            }
+          };
+
+          ctx = document.getElementById('lineChartExample').getContext("2d");
+
+          gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+          gradientStroke.addColorStop(0, '#80b6f4');
+          gradientStroke.addColorStop(1, chartColor);
+
+          gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+          gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+          gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+
+          myChart = new Chart(ctx, {
+            type: 'line',
+            responsive: true,
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              datasets: [{
+                label: "Active Users",
+                borderColor: "#f96332",
+                pointBorderColor: "#FFF",
+                pointBackgroundColor: "#f96332",
+                pointBorderWidth: 2,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 1,
+                pointRadius: 4,
+                fill: true,
+                backgroundColor: gradientFill,
+                borderWidth: 2,
+                data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
+              }]
+            },
+            options: gradientChartOptionsConfiguration
+          });
+        },
+
+        initDashboardPageCharts: function() {
+
+          gradientChartOptionsConfigurationWithTooltipBlue = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+
+            tooltips: {
+              backgroundColor: '#f5f5f5',
+              titleFontColor: '#333',
+              bodyFontColor: '#666',
+              bodySpacing: 4,
+              xPadding: 12,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest"
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.0)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  suggestedMin: 60,
+                  suggestedMax: 125,
+                  padding: 20,
+                  fontColor: "#2380f7"
+                }
+              }],
+
+              xAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  padding: 20,
+                  fontColor: "#2380f7"
+                }
+              }]
+            }
+          };
+
+          gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+
+            tooltips: {
+              backgroundColor: '#f5f5f5',
+              titleFontColor: '#333',
+              bodyFontColor: '#666',
+              bodySpacing: 4,
+              xPadding: 12,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest"
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.0)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  suggestedMin: 60,
+                  suggestedMax: 125,
+                  padding: 20,
+                  fontColor: "#9a9a9a"
+                }
+              }],
+
+              xAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(225,78,202,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  padding: 20,
+                  fontColor: "#9a9a9a"
+                }
+              }]
+            }
+          };
+
+          gradientChartOptionsConfigurationWithTooltipOrange = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+
+            tooltips: {
+              backgroundColor: '#f5f5f5',
+              titleFontColor: '#333',
+              bodyFontColor: '#666',
+              bodySpacing: 4,
+              xPadding: 12,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest"
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.0)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  suggestedMin: 50,
+                  suggestedMax: 110,
+                  padding: 20,
+                  fontColor: "#ff8a76"
+                }
+              }],
+
+              xAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(220,53,69,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  padding: 20,
+                  fontColor: "#ff8a76"
+                }
+              }]
+            }
+          };
+
+          gradientChartOptionsConfigurationWithTooltipGreen = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+
+            tooltips: {
+              backgroundColor: '#f5f5f5',
+              titleFontColor: '#333',
+              bodyFontColor: '#666',
+              bodySpacing: 4,
+              xPadding: 12,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest"
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.0)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  suggestedMin: 50,
+                  suggestedMax: 125,
+                  padding: 20,
+                  fontColor: "#9e9e9e"
+                }
+              }],
+
+              xAxes: [{
+                barPercentage: 1.6,
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(0,242,195,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  padding: 20,
+                  fontColor: "#9e9e9e"
+                }
+              }]
+            }
+          };
+
+
+          gradientBarChartConfiguration = {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+
+            tooltips: {
+              backgroundColor: '#f5f5f5',
+              titleFontColor: '#333',
+              bodyFontColor: '#666',
+              bodySpacing: 4,
+              xPadding: 12,
+              mode: "nearest",
+              intersect: 0,
+              position: "nearest"
+            },
+            responsive: true,
+            scales: {
+              yAxes: [{
+
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  suggestedMin: 60,
+                  suggestedMax: 120,
+                  padding: 20,
+                  fontColor: "#9e9e9e"
+                }
+              }],
+
+              xAxes: [{
+
+                gridLines: {
+                  drawBorder: false,
+                  color: 'rgba(29,140,248,0.1)',
+                  zeroLineColor: "transparent",
+                },
+                ticks: {
+                  padding: 20,
+                  fontColor: "#9e9e9e"
+                }
+              }]
+            }
+          };
+
+          var ctx = document.getElementById("chartLinePurple").getContext("2d");
+
+          var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+          gradientStroke.addColorStop(1, 'rgba(72,72,176,0.2)');
+          gradientStroke.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+          gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+
+          var data = {
+            labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            datasets: [{
+              label: "Data",
+              fill: true,
+              backgroundColor: gradientStroke,
+              borderColor: '#d048b6',
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: '#d048b6',
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: '#d048b6',
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [80, 100, 70, 80, 120, 80],
+            }]
+          };
+
+          var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+          });
+
+
+          var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
+
+          var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+          gradientStroke.addColorStop(1, 'rgba(66,134,121,0.15)');
+          gradientStroke.addColorStop(0.4, 'rgba(66,134,121,0.0)'); //green colors
+          gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
+
+          var data = {
+            labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+            datasets: [{
+              label: "My First dataset",
+              fill: true,
+              backgroundColor: gradientStroke,
+              borderColor: '#00d6b4',
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: '#00d6b4',
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: '#00d6b4',
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [<%= @latest_val_int %>, 27, 60, 12, 80],
+            }]
+          };
+
+          var myChart = new Chart(ctxGreen, {
+            type: 'line',
+            data: data,
+            options: gradientChartOptionsConfigurationWithTooltipGreen
+
+          });
+
+
+
+          var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+          var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+
+
+          var ctx = document.getElementById("chartBig1").getContext('2d');
+
+          var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+          gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+          gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+          gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+          var config = {
+            type: 'line',
+            data: {
+              labels: chart_labels,
+              datasets: [{
+                label: "My First dataset",
+                fill: true,
+                backgroundColor: gradientStroke,
+                borderColor: '#d346b1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                pointBackgroundColor: '#d346b1',
+                pointBorderColor: 'rgba(255,255,255,0)',
+                pointHoverBackgroundColor: '#d346b1',
+                pointBorderWidth: 20,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 15,
+                pointRadius: 4,
+                data: chart_data,
+              }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+          };
+          var myChartData = new Chart(ctx, config);
+          $("#0").click(function() {
+            var data = myChartData.config.data;
+            data.datasets[0].data = chart_data;
+            data.labels = chart_labels;
+            myChartData.update();
+          });
+          $("#1").click(function() {
+            var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
+            var data = myChartData.config.data;
+            data.datasets[0].data = chart_data;
+            data.labels = chart_labels;
+            myChartData.update();
+          });
+
+          $("#2").click(function() {
+            var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
+            var data = myChartData.config.data;
+            data.datasets[0].data = chart_data;
+            data.labels = chart_labels;
+            myChartData.update();
+          });
+
+
+          var ctx = document.getElementById("CountryChart").getContext("2d");
+
+          var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+          gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+          gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+          gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            responsive: true,
+            legend: {
+              display: false
+            },
+            data: {
+              labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+              datasets: [{
+                label: "Countries",
+                fill: true,
+                backgroundColor: gradientStroke,
+                hoverBackgroundColor: gradientStroke,
+                borderColor: '#1f8ef1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                data: [<%= @latest_val %>],
+              }]
+            },
+            options: gradientBarChartConfiguration
+          });
+
+          var ctx = document.getElementById("mych").getContext("2d");
+
+          var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+          gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+          gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+          gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            responsive: true,
+            legend: {
+              display: false
+            },
+            data: {
+              labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+              datasets: [{
+                label: "Countries",
+                fill: true,
+                backgroundColor: gradientStroke,
+                hoverBackgroundColor: gradientStroke,
+                borderColor: '#1f8ef1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                data: [<%= "#{@latest_val_int}" %>],
+              }]
+            },
+            options: gradientBarChartConfiguration
+          });
+        },
+
+      };
+</script>
+<!-- End chart js -->
+  </body>
+
+</html>

@@ -1,0 +1,259 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ //div {
+//     resize: both;
+//     overflow: auto;
+ //}
+@font-face{font-family:'nucleo'; src:url('nucleo.ttf')}
+
+//@font-face {
+//  font-family: "font-awesome";
+//  src: asset-url('webfonts/fa-brands-400.ttf') format('truetype');
+//}
+@font-face {
+  font-family: "nucleo";
+  src: asset-url('nucleo.ttf') format('truetype');
+}
+//@import "bootstrap";
+//@import "font-awesome";
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Poppins ExtraLight'), local('Poppins-ExtraLight'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLFj_Z1xlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Poppins Light'), local('Poppins-Light'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLDz8Z1xlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrJJfedw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLEj6Z1xlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Poppins Bold'), local('Poppins-Bold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLCz7Z1xlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Poppins ExtraBold'), local('Poppins-ExtraBold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLDD4Z1xlEA.ttf) format('truetype');
+}
+
+@import "css/dashboard-main.css";
+@import "dashboard-main/custom/functions";
+@import "dashboard-main/bootstrap/functions";
+
+@import "dashboard-main/custom/variables";
+@import "dashboard-main/bootstrap/variables";
+
+@import "dashboard-main/custom/mixins";
+@import "dashboard-main/bootstrap/mixins";
+
+ // Bootstrap components
+
+@import "dashboard-main/bootstrap/root";
+@import "dashboard-main/bootstrap/reboot";
+@import "dashboard-main/bootstrap/type";
+@import "dashboard-main/bootstrap/images";
+@import "dashboard-main/bootstrap/code";
+@import "dashboard-main/bootstrap/grid";
+@import "dashboard-main/bootstrap/tables";
+@import "dashboard-main/bootstrap/forms";
+@import "dashboard-main/bootstrap/buttons";
+@import "dashboard-main/bootstrap/transitions";
+@import "dashboard-main/bootstrap/dropdown";
+@import "dashboard-main/bootstrap/button-group";
+@import "dashboard-main/bootstrap/input-group";
+@import "dashboard-main/bootstrap/custom-forms";
+@import "dashboard-main/bootstrap/nav";
+@import "dashboard-main/bootstrap/navbar";
+@import "dashboard-main/bootstrap/card";
+@import "dashboard-main/bootstrap/breadcrumb";
+@import "dashboard-main/bootstrap/pagination";
+@import "dashboard-main/bootstrap/badge";
+@import "dashboard-main/bootstrap/jumbotron";
+@import "dashboard-main/bootstrap/alert";
+@import "dashboard-main/bootstrap/progress";
+@import "dashboard-main/bootstrap/media";
+@import "dashboard-main/bootstrap/list-group";
+@import "dashboard-main/bootstrap/close";
+@import "dashboard-main/bootstrap/modal";
+@import "dashboard-main/bootstrap/tooltip";
+@import "dashboard-main/bootstrap/popover";
+@import "dashboard-main/bootstrap/carousel";
+@import "dashboard-main/bootstrap/utilities";
+@import "dashboard-main/bootstrap/print";
+
+ // Custom components
+
+ @import "dashboard-main/custom/alerts.scss";
+ @import "dashboard-main/custom/buttons.scss";
+ @import "dashboard-main/custom/dropdown.scss";
+ @import "dashboard-main/custom/footer.scss";
+ @import "dashboard-main/custom/forms.scss";
+ @import "dashboard-main/custom/images.scss";
+ @import "dashboard-main/custom/modal.scss";
+ @import "dashboard-main/custom/navbar.scss";
+ @import "dashboard-main/custom/type.scss";
+ @import "dashboard-main/custom/tables";
+ @import "dashboard-main/custom/checkboxes-radio";
+ @import "dashboard-main/custom/fixed-plugin";
+ @import "dashboard-main/custom/sidebar-and-main-panel.scss";
+ @import "dashboard-main/custom/misc.scss";
+ @import "dashboard-main/custom/rtl.scss";
+ @import "dashboard-main/custom/input-group.scss";
+
+
+ // Vendor / Plugins
+
+@import "dashboard-main/custom/vendor/plugin-perfect-scrollbar.scss";
+@import "dashboard-main/custom/vendor/plugin-animate-bootstrap-notify.scss";
+
+// light mode
+
+@import "dashboard-main/custom/white-content.scss";
+
+// Cards
+
+@import 'dashboard-main/custom/card';
+@import "dashboard-main/custom/cards/card-chart";
+@import "dashboard-main/custom/cards/card-map";
+@import "dashboard-main/custom/cards/card-user";
+@import "dashboard-main/custom/cards/card-task";
+@import "dashboard-main/custom/cards/card-plain";
+
+
+
+.output {
+  width: 100%;
+  margin-left: 0%;
+  font: strong;
+}
+
+.content{
+	text-align: center;
+
+}
+
+.header{
+
+}
+
+
+
+.box {
+
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+-moz-box-shadow: 0px 0px 10px #000000;
+-webkit-box-shadow: 0px 0px 10px #000000;
+box-shadow: 0px 0px 10px #000000;
+/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#b5b5b5', endColorstr = '#000000');
+/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+/*Element must have a height (not auto)*/
+/*All filters must be placed together*/
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#b5b5b5', endColorstr = '#000000')";
+/*Element must have a height (not auto)*/
+/*All filters must be placed together*/
+background-image: -moz-linear-gradient(top, #b5b5b5, #000000);
+background-image: -ms-linear-gradient(top, #b5b5b5, #000000);
+background-image: -o-linear-gradient(top, #b5b5b5, #000000);
+background-image: -webkit-gradient(linear, center top, center bottom, from(#b5b5b5), to(#000000));
+background-image: -webkit-linear-gradient(top, #b5b5b5, #000000);
+background-image: linear-gradient(top, #b5b5b5, #000000);
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+/*Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+/*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+opacity: 0.74;
+-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 74);
+/*-ms-filter must come before filter*/
+filter: alpha(opacity = 74);
+/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+/*All filters must be placed together*/
+
+}
+
+/*
+input[type=button] {
+
+  background: #3CBEFE;
+  border: 2px solid #255484;
+  padding: 2.5px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 7);
+
+    button,
+    button:focus,
+    button:active{
+        padding: 0;
+    }
+    span{
+        position:relative;
+    }
+
+}
+
+input[type=submit] {
+  background: #3CBEFE;
+  border: 1.5px solid #255484;
+  padding: 2.5px 20px;
+  border-radius: 5px;
+  box-shadow: 1.2px 1px 3px rgba(0, 0, 0, 7);
+}
+*/
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  height:3px;
+  width:100%;
+  cursor: pointer;
+  background: #07C;
+  margin-bottom: 10px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid #07C;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1.2px 1px 3px rgba(0, 0, 0, 7);
+}
+
+input[type=range]:focus {
+  outline: none;
+
+
+}

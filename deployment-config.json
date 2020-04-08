@@ -1,0 +1,9 @@
+{
+    "type": "sftp",
+    "host": "222.122.31.111",
+    "username": "ludiapm",
+    "password": "cjdghek!@34",
+    "port": 27000,
+    "remotePath": "",
+    "uploadOnSave": false
+}

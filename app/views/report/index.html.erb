@@ -1,0 +1,136 @@
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="assets/jquery-3.4.1.min.js"></script>
+<script src="assets/jquery-ui.js"></script>
+<script src="assets/popper.min.js"></script>
+<script src="assets/bootstrap.min.js"></script>
+<%= stylesheet_link_tag    'report', media: 'all', 'data-turbolinks-track' => true %>
+
+<%= stylesheet_link_tag 'datetimepicker.css', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "moment-with-locales.js" %>
+<%= javascript_include_tag "datetimepicker.js" %>
+
+
+<div id="main_entire">
+
+	<div id="header_top" >
+
+	</div>
+
+
+	<div id="main_title">
+
+		<meta charset="utf-8">
+
+		<header>
+			<div id="header_sub">
+
+
+
+				<div class="shadow p-3 mb-6 bg-white" id="date-picker-head" align="left">
+					<script>
+
+						$(function () {
+							var dates = $("#picker").dateTimePicker({
+								locale: 'ko-KR',
+
+								dateFormat: 'yy-mm-dd',
+								showMonthAfterYear: true,
+								dateFormat:"YYYY-MM-DD HH:mm",
+								showTime:true,
+
+
+
+							});
+						});
+					</script>
+
+					<div id="picker"> </div>
+					<input type="hidden" id="result" value="">
+
+
+			</div>
+		</div>
+
+	</header>
+
+</div>
+<body>
+	<div class="shadow p-3 mb-6 bg-white" id="main_container">
+		<br></br>
+		<div id="main-outline">
+			<div id="main-content">
+				<div id = "application_performance">
+
+					<div id="report_logo" class="row"><%= image_tag("report_logo.png", :align=> "left")%> </div><br>
+
+					<h4 align="left"> <STRONG> Daily Report </STRONG> </h4> <br>
+
+					<div id ="application_performance_text" align="left">
+
+
+						<h4 align="left"> 일일 보고서 ( <%= Date.today %> 00:00 ~ 현재 <%= @time_new %> 까지 ) </h4>
+						<h3 align="center">웹 어플리케이션 </h3>
+
+						<h4 align="center "><strong>어플리케이션의 전반적인 성능 지표를 모니터링한 결과를 도출 합니다.</strong></h4><br></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>동시 접속자 수 :</strong> 어플리케이션 서버에 현재 접속중인 유저의 수를 의미 합니다.<br></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>웹페이지 응답 속도 :</strong> 지정한 URL 에 요청하여 응답에 소요 되는 시간을 의미 합니다.<br></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>웹페이지 다운로드 속도 :</strong> 지정한 URL 의 다운로드 속도를 표시 합니다.<br></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>히트맵 네트워크 트래픽 분포도 (인 바운드 ) : </strong>현재 서버에서 수신 중인 모든 트래픽을 히트맵으로 표시 합니다.<br></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>히트맵 네트워크 트래픽 분포도 (아웃 바운드 ) : </strong>현재 서버에서 발신 중인 모든 트래픽을 히트맵으로 표시 합니다.<br></br><br></br>
+					</div>
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=18&width=300&height=240&tz=Asia%2FSeoul">
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=16&width=300&height=240&tz=Asia%2FSeoul">
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=2&width=300&height=240&tz=Asia%2FSeoul">
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=26&width=340&height=240&tz=Asia%2FSeoul">
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=27&width=340&height=240&tz=Asia%2FSeoul">
+				</div>
+				<br></br>
+
+
+				<div id="infra_performance">
+
+					<h4>인프라 </h4><br></br>
+
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=8&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=4&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=6&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=31&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=12&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=29&width=300&height=240&tz=Asia%2FSeoul">
+
+
+					<br></br>
+				</div>
+
+
+				<div id="database_performance" align="center" >
+
+					<h4>데이터 베이스</h4><br></br>
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=15&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=14&width=300&height=240&tz=Asia%2FSeoul">
+					<img src="http://192.168.0.30:3000/render/d-solo/ReportResource/report-resource-ripoteuyong?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&theme=기본%20테마&panelId=33&width=300&height=240&tz=Asia%2FSeoul">
+
+					<br></br>
+				</div>
+
+				<div id="problem_history" align="center">
+
+					<h4>문제 이벤트 발생 현황 </h4><br></br>
+					<img src="http://192.168.0.30:3000/render/d-solo/000001000/mein-daesibodeu-jeonce-risoseu-hyeonhwangpan?orgId=1&from=<%=@dateone%>&to=<%=@datetwo%>&var-group=Core%20Servers&var-host=MainSVR__MYSQL-JAVA-PHP&panelId=94&width=1000&height=500&tz=Asia%2FSeoul">
+
+				</div>
+				</div>
+			</body>
+		</div>
+	</div>
+</div>
+<
+
+
+</html>

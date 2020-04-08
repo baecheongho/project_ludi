@@ -1,0 +1,28 @@
+
+<div class="col-md-12">
+        <div id="create_group_and_host">
+
+
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <% selected_group_name = @selected_group %>
+                <% selected_group_groupid = @selected_group.gsub!(/[^0-9]/, ' ') %>
+                <% host_ret_val = host_get_by_groupid(selected_group_groupid ) %>
+                <% @host_val = host_ret_val.map {|x| x["name"] } %>
+
+                <%= select_tag( 'group_val_name', options_for_select(@group_ret_val), prompt: @selected_group_name , class: "form-control" ,
+                name: 'group_val_name' , data: { remote: true, url: 'ajax', method: 'post' }) %>
+              </div>
+            </div>
+            <div class="col-md-5 px-md-1">
+              <div class="form-group">
+
+
+                <%= select_tag( 'host_val', options_for_select(@host_val), prompt: "Select Host", class: "form-control" ,
+                name: 'host_val', data: { remote: true, url: 'index', method: 'post' }) %>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
