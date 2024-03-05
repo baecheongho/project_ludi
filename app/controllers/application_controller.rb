@@ -20,8 +20,8 @@ def zbx_api
 
   conn_zbx_api = ZabbixApi.connect(
     :url => 'http://demo.ludimore.com/zabbix/api_jsonrpc.php',
-    :user => 'Admin',
-    :password => 'cjdgh2757',
+    #:user => 
+    #:password => 
 #  :http_password => 'foo',
 #  :http_user => 'bar'
 )
